@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jura:wght@300..700&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Inter:wght@100..900&family=Jura:wght@300..700&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Hurricane&family=Inter:wght@100..900&family=Jura:wght@300..700&family=Kaushan+Script&display=swap');
+
+
+
+*{
+    /* font-family: "Kaushan Script", cursive;
+    font-family: "Inter", sans-serif;
+    font-family: "Jura", sans-serif;
+    font-family: "Goldman", sans-serif;
+    font-family: "Hurricane", cursive; */
+    margin: 0;
+    padding: 0;
+    /* background:rgba(0, 0, 0, 0.850)url(https://wallpaperbat.com/img/24803-gta-wallpaper-top-free-gta-background.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+}
+
+
+.blur{
+    width: 20vw;
+    height: 40vh;
+    background: #00A3FF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(15vh);
+}
+
+.img1{
+    width:  45vh;
+    background: none;
+    position: absolute;
+    top: 44.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.titlu{
+    color: #00A3FF;
+    font-family: "Kaushan Script", cursive;
+    background: none;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10vh;
+    text-shadow: 0 0 0.5vh #00A3FF;
+}
+
+.scres{
+    color: rgb(194, 194, 194);
+    font-family: "Inter", sans-serif;
+    background: none;
+    font-weight: 600;
+    position: absolute;
+    top: 63.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2vh;
+}
+
+button{
+    background: yellow;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    padding: 1vh 4.5vh 1vh 4.5vh;
+    border-radius: 1.5vh;
+    font-size: 2vh;
+    font-family: "Jura", sans-serif;
+    text-shadow: 0 0.2vh 0.4vh black;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+button:hover{
+    box-shadow: 0 0 4vh yellow;
+}
+
+/* -----------------------------------------------TIMER------------------------------------------------------ */
+
+.second-container{
+    background: linear-gradient(to bottom, #ff0000c2 5%, transparent 95%);
+    width: 5vw;
+    height: 9vh;
+    position: absolute;
+    top: 4.5%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.img2{
+    width: 17vh;
+    background: none;
+    margin-top: -3vh;
+}
+
+
+.rewardIn{
+    background: none;
+    line-height: 0.8vh;
+    text-shadow: 0 0.2vh 0.4vh black;
+    margin-top: 13vh;
+}
+
+.timer{
+    background: 0;
+    color: yellow;
+    font-family: "Jura", sans-serif;
+    font-weight: 100;
+    font-size: 1.5vh;
+    text-shadow: 0 0.2vh 0.4vh black;
+}
