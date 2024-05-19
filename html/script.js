@@ -9,8 +9,8 @@ window.addEventListener('message', function(event) {
 
     if(data.type === "Available") {
         $(".timer").html("AVAILABLE")
-    } else if(data.type === "Tomorrow") {
-        $(".timer").html("Tomorrow")
+    } else if(data.type === "Invalid") {
+        $(".timer").html(data.hours + " hour(s)")
     }
 
     if (data.which == 27) {
