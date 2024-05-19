@@ -16,46 +16,47 @@ server.givePPFunction = vRP.givePremiumPoints
 server.ppMin = 1
 server.ppMax = 2
 
+local rewardData = 0 -- cooldown
+
 AddEventHandler("vRP:playerSpawn", function(user_id, source, first_spawn)
     if first_spawn then
         exports.oxmysql:query("SELECT dailyReward FROM vrp_users WHERE id=@user_id", {user_id = user_id}, function(i)
-            if i[1].dailyReward == 0 then
+            rewardData = i[1].dailyReward
+            if rewardData == 0 then
                 TriggerClientEvent("vd:setPlayerHud", source,"Available")
             else
-                TriggerClientEvent("vd:setPlayerHud", source, "Tomorrow")
+                TriggerClientEvent("vd:setPlayerHud", source, "Invalid", rewardData)
             end
         end)
     end
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1800000)
-        if os.date("%H") == 23 then
-            exports.oxmysql:query("UPDATE vrp_users SET dailyReward=0", {})
-        end
+RegisterServerEvent("vd:updateTime", function(hours)
+    if (hours + 1) ~= rewardData then return DropPlayer(source, "Mars") end
+    rewardData = hours
+    if rewardData == 0 then
+        TriggerClientEvent("vd:setPlayerHud", source,"Available")
+    else
+        TriggerClientEvent("vd:setPlayerHud", source, "Invalid", rewardData)
     end
 end)
 
 RegisterCommand("dailyreward", function(player, args)
     local user_id = vRP.getUserId{player}
 
-    exports.oxmysql:query("SELECT dailyReward FROM vrp_users WHERE id=@user_id", {user_id = user_id}, function(i)
-        if i[1].dailyReward == 1 then return vRPclient.notify(player, {"Ai luat deja daily reward-ul (Poti da din nou aceasta comanda la ora 23:00)"}) end
-
+    if rewardData == 0 then
         TriggerClientEvent("vd:startPlayerReward", player)
-    end)
+    end
 end)
 
 RegisterServerEvent("vd:giveRewardToPlayer", function()
     local user_id = vRP.getUserId({source})
 
-    exports.oxmysql:query("SELECT dailyReward FROM vrp_users WHERE id=@user_id", {user_id = user_id}, function(i)
-        if i[1].dailyReward == 1 then return vRPclient.notify(source, {"Pacatos"}) end
-    end)
+    if rewardData ~= 0 then return vRPclient.notify(source, {"Pacatos"}) end
 
-    exports.oxmysql:query("UPDATE vrp_users SET dailyReward = 1 WHERE id=@user_id", {user_id = user_id})
-    TriggerClientEvent("vd:setPlayerHud", source, "Tomorrow")
+    rewardData = 24
+    exports.oxmysql:query("UPDATE vrp_users SET dailyReward = 24 WHERE id=@user_id", {user_id = user_id})
+    TriggerClientEvent("vd:setPlayerHud", source, "Invalid", rewardData)
 
     local chance = math.random(1, #server.rewards)
     for k,v in pairs(server.rewards) do
