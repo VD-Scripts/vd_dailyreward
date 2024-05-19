@@ -9,6 +9,7 @@ Cu ajutorul acestui script puteti sa oferiti jucatorilor inca o activitate pe se
 
 # Showcase
 Update 1.1:
+
 ![image](https://github.com/VD-Scripts/vd_dailyreward/assets/117598520/bf193d96-4139-4baf-a1b2-2c760966fda2)
 
 Update 1:
