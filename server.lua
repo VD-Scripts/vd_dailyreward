@@ -48,7 +48,7 @@ end)
 RegisterCommand("dailyreward", function(player, args)
     local user_id = vRP.getUserId{player}
 
-    if rewardData == 0 then
+    if rewardData[user_id] == 0 then
         TriggerClientEvent("vd:startPlayerReward", player)
     end
 end)
